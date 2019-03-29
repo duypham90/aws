@@ -1,5 +1,9 @@
 # AWS
 
+```javascript
+./set_php_layer.sh
+/deploy.sh 
+```
 ## Deploying By SAM
 
 - [Docs](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/serverless-deploying.html)
