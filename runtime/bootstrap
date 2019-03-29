@@ -1,0 +1,2 @@
+#!/bin/sh
+/opt/bin/php /opt/runtime.php
