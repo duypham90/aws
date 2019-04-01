@@ -1,6 +1,9 @@
 # AWS
 
 ```javascript
+source deploy.sh && set_php_layer
+source deploy.sh && deploy
+OR
 ./set_php_layer.sh
 /deploy.sh 
 ```
