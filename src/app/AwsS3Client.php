@@ -31,7 +31,7 @@ class AwsS3Client
 
         try {
             $result = $this->s3Client->putObject(array(
-                'Bucket' => 'Your S3 Bucket',
+                'Bucket' => getenv('S3_BUCKET_UPLOAD'),
                 'Key' => $filePath,
                 'Body' => $data
             ));

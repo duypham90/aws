@@ -60,7 +60,7 @@ class Container
     public function getSendGrid()
     {
         if ($this->sendGrid === null) {
-            $this->sendGrid = new SendGridMailClient(new SendGrid('SendGridApiKey'));
+            $this->sendGrid = new SendGridMailClient(new SendGrid(getenv('SEND_GRID_API_KEY')));
         }
 
         return $this->sendGrid;
