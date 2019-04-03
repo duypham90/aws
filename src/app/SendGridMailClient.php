@@ -21,9 +21,11 @@ class SendGridMailClient
         $this->sendGrid = $sendGrid;
     }
 
+
     /**
      * @param $data
      * @return bool
+     * @throws SendGrid\Mail\TypeException
      */
     public function sendGridMailTutorial($data)
     {
@@ -43,7 +45,6 @@ class SendGridMailClient
 
         try {
             $response = $this->sendGrid->send($email);
-            var_dump($response);
             if ($response->statusCode() === 200 || $response->statusCode() === 202) {
                 return true;
             }

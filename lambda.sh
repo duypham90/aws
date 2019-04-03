@@ -1,10 +1,10 @@
 #!/bin/bash
 
 # Set environment
-PHP_RUNTIME_ZIP='php-runtime.zip'
-PHP_RUNTIME_LAYER='php-runtime-layer'
-S3_BUCKET='lambda-source-duy' # You must create S3_BUCKET before run
-STACK_NAME='lambda-stack';
+PHP_RUNTIME_ZIP='name.zip'
+PHP_RUNTIME_LAYER='Your layer'
+S3_BUCKET='Your Bucker' # You must create S3_BUCKET before run
+STACK_NAME='Your Lambda stack';
 
 function set_php_layer()
 {
