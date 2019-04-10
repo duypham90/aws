@@ -1,7 +1,7 @@
 # AWS
 
 ## Deploying By SAM
-
+- [Event rule](https://github.com/awslabs/aws-security-benchmark/blob/master/architecture/create-benchmark-rules.yaml)
 - [Docs](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/serverless-deploying.html)
 - [Aws CLI](https://docs.aws.amazon.com/cli/latest/reference/cloudformation/deploy/index.html)
 
