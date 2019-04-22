@@ -128,21 +128,21 @@ Resources:
       MemorySize: 1024
       Timeout: 15
   LambdaFunctionOverHttps:
-  Type: AWS::Serverless::Function
-  Properties:
-    Handler: test
-    Runtime: provided
-    CodeUri: ./src
-    Events:
-      Api1:
-        Type: Api
-        Properties:
-          Path: /hello
-          Method: POST
-      Api2:
-        Type: Api
-        Properties:
-          Path: /hello/{itemId}
-          Method: ANY   
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: test
+      Runtime: provided
+      CodeUri: ./src
+      Events:
+        Api1:
+          Type: Api
+          Properties:
+            Path: /hello
+            Method: POST
+        Api2:
+          Type: Api
+          Properties:
+            Path: /hello/{itemId}
+            Method: ANY   
 
 ```
