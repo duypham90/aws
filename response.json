@@ -1,0 +1,41 @@
+{
+    "resource": "/hello",
+    "path": "/hello",
+    "httpMethod": "POST",
+    "headers": null,
+    "multiValueHeaders": null,
+    "queryStringParameters": null,
+    "multiValueQueryStringParameters": null,
+    "pathParameters": null,
+    "stageVariables": null,
+    "requestContext": {
+        "path": "/hello",
+        "accountId": "270663217580",
+        "resourceId": "hmcbmg",
+        "stage": "test-invoke-stage",
+        "domainPrefix": "testPrefix",
+        "requestId": "32fd31df-64d0-11e9-b37e-81bb20207fbf",
+        "identity": {
+            "cognitoIdentityPoolId": null,
+            "cognitoIdentityId": null,
+            "apiKey": "test-invoke-api-key",
+            "cognitoAuthenticationType": null,
+            "userArn": "arn:aws:iam::270663217580:root",
+            "apiKeyId": "test-invoke-api-key-id",
+            "userAgent": "aws-internal/3 aws-sdk-java/1.11.498 Linux/4.9.137-0.1.ac.218.74.329.metal1.x86_64 OpenJDK_64-Bit_Server_VM/25.202-b08 java/1.8.0_202",
+            "accountId": "270663217580",
+            "caller": "270663217580",
+            "sourceIp": "test-invoke-source-ip",
+            "accessKey": "ASIAT6BGI6GWFA7OOQFY",
+            "cognitoAuthenticationProvider": null,
+            "user": "270663217580"
+        },
+        "domainName": "testPrefix.testDomainName",
+        "resourcePath": "/hello",
+        "httpMethod": "POST",
+        "extendedRequestId": "Yh362FeXIAMFvwQ=",
+        "apiId": "cb19xsu578"
+    },
+    "body": "{\n    \"test\": \"ok\"\n}",
+    "isBase64Encoded": false
+}

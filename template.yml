@@ -1,38 +1,92 @@
 AWSTemplateFormatVersion: '2010-09-09'
 Transform: AWS::Serverless-2016-10-31
+Globals:
+  Function:
+    Runtime: provided
+    MemorySize: 1024
+    Timeout: 15
+    Layers:
+      - arn:aws:lambda:xx-xxxx-x:xxxxxxxxxxxx:layer:xxx-runtime-layer:x
 Resources:
-  InitRoleLambda:
+  Role:
     Type: AWS::IAM::Role
     Properties:
-      RoleName:
-        Fn::Sub: lambda-role
       AssumeRolePolicyDocument:
         Version: 2012-10-17
         Statement:
-          - Action:
-            - sts:AssumeRole
             Effect: Allow
             Principal:
               Service:
-              - lambda.amazonaws.com
-      ManagedPolicyArns:
-        - arn:aws:iam::aws:policy/AWSLambdaExecute
-        - arn:aws:iam::aws:policy/AmazonS3FullAccess
-        - arn:aws:iam::aws:policy/AmazonDynamoDBFullAccess
-        - arn:aws:iam::aws:policy/AmazonKinesisFullAccess
+                - lambda.amazonaws.com
+            Action:
+              - sts:AssumeRole
       Path: /
+  RolePolicies:
+    Type: AWS::IAM::Policy
+    Properties:
+      PolicyName: InitRolePolicies
+      PolicyDocument:
+        Version: 2012-10-17
+        Statement:
+            Effect: Allow
+            Action:
+              - "cloudwatch:*"
+              - "s3:*"
+              - "dynamodb:*"
+              - "logs:CreateLogGroup"
+              - "logs:CreateLogStream"
+              - "logs:DescribeLogGroups"
+              - "logs:DescribeLogStreams"
+              - "logs:PutLogEvents"
+              - "logs:GetLogEvents"
+              - "logs:FilterLogEvents"
+            Resource: "*"
+      Roles:
+        -
+          Ref: Role
   TestSAM:
     Type: 'AWS::Serverless::Function'
     Properties:
-      Handler: sendGridTutorial
-      Role: !GetAtt [InitRoleLambda, Arn]
+      Handler: demo
+      Role: !GetAtt [Role, Arn]
       Runtime: provided
-      Layers:
-        - arn:aws:lambda:xx-xxxx-x:xxxxxxxxxxxx:layer:xxx-runtime-layer:x
       CodeUri: ./src
       Description: TEST SAM
-      MemorySize: 1024
-      Timeout: 15
+  demoHello:
+    Type: 'AWS::Serverless::Function'
+    Properties:
+      Handler: demo
+      Role: !GetAtt [Role, Arn]
+      Events:
+        testInput1:
+          Type: Schedule
+          Properties:
+            Schedule: rate(4 minutes)
+            Input: '{ "user": 1 }'
+        testInput2:
+          Type: Schedule
+          Properties:
+            Schedule: rate(4 minutes)
+            Input: '{ "user": 2 }'
+      CodeUri: ./src
+      Description: Test Input
+  LambdaApi:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: demo
+      Runtime: provided
+      CodeUri: ./src
+      Events:
+        Api1:
+          Type: Api
+          Properties:
+            Path: /hello
+            Method: POST
+        Api2:
+          Type: Api
+          Properties:
+            Path: /hello/{itemId}
+            Method: ANY
   createS3:
       Type: 'AWS::S3::Bucket'
       Properties:

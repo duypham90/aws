@@ -5,7 +5,7 @@ namespace App;
 use SendGrid;
 use SendGrid\Mail\Mail;
 
-class SendGridMailClient
+class SendGridMail
 {
     /**
      * @var SendGrid
@@ -27,7 +27,7 @@ class SendGridMailClient
      * @return bool
      * @throws SendGrid\Mail\TypeException
      */
-    public function sendGridMailTutorial($data)
+    public function testSendMail($data)
     {
         $email = new Mail();
         $email->setFrom("test@example.com", "Test SendGridApi");

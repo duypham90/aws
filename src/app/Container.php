@@ -19,7 +19,7 @@ class Container
     private $s3;
 
     /**
-     * @var SendGridMailClient
+     * @var SendGridMail
      */
     private $sendGrid;
 
@@ -55,12 +55,12 @@ class Container
     }
 
     /**
-     * @return SendGridMailClient
+     * @return SendGridMail
      */
     public function getSendGrid()
     {
         if ($this->sendGrid === null) {
-            $this->sendGrid = new SendGridMailClient(new SendGrid(getenv('SEND_GRID_API_KEY')));
+            $this->sendGrid = new SendGridMail(new SendGrid(getenv('SEND_GRID_API_KEY')));
         }
 
         return $this->sendGrid;
