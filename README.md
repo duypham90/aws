@@ -4,6 +4,10 @@
 - [Event rule](https://github.com/awslabs/aws-security-benchmark/blob/master/architecture/create-benchmark-rules.yaml)
 - [Docs](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/serverless-deploying.html)
 - [Aws CLI](https://docs.aws.amazon.com/cli/latest/reference/cloudformation/deploy/index.html)
+- [sam-test-basic-project](https://github.com/mavi888/sam-test-basic-project)
+- [serverless-sam to sam-template.yml](https://github.com/SAPessi/serverless-sam)
+- [PHP Runtime](https://github.com/pagnihotry/PHP-Lambda-Runtime)
+- [Custome PHP-runtime](https://aws.amazon.com/vi/blogs/apn/aws-lambda-custom-runtime-for-php-a-practical-example/)
 
 ## Note
 
@@ -123,5 +127,22 @@ Resources:
       Description: TEST SAM
       MemorySize: 1024
       Timeout: 15
+   LambdaFunctionOverHttps:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: test
+      Runtime: provided
+      CodeUri: ./src
+      Events:
+        Api1:
+          Type: Api
+          Properties:
+            Path: /hello
+            Method: POST
+        Api2:
+          Type: Api
+          Properties:
+            Path: /hello/{itemId}
+            Method: ANY   
 
 ```
