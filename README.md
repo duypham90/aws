@@ -1,5 +1,7 @@
 # AWS
 
+https://github.com/localstack/localstack
+
 ## Deploying By SAM
 - [Event rule](https://github.com/awslabs/aws-security-benchmark/blob/master/architecture/create-benchmark-rules.yaml)
 - [Docs](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/serverless-deploying.html)
